@@ -3,16 +3,7 @@ NAME		=	push_swap
 # --   Directory   -- #
 OBJ_DIR     =	objs
 
-OBJ_SUB_DIR =	array\
-moves_utils\
-engine\
-engine/execution\
-engine/ft_eval\
-insts_utils\
-stack_utils\
-utils\
-errors\
-save_utils\
+OBJ_SUB_DIR =	
 
 OBJ_TO_CREATE = $(addprefix $(OBJ_DIR)/, $(OBJ_SUB_DIR))
 
