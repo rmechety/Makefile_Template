@@ -29,7 +29,7 @@ PARAM =
 
 #Mandatory rules
 
-all : header
+all : 
 	@mkdir -p $(OBJ_TO_CREATE)
 	@make $(NAME) --no-print-directory
 
@@ -57,7 +57,7 @@ git :
 	git push
 
 get_src:
-		@find src -type f -name "*.c" | tr "\n" "|" | sed -r 's/["|"]+/\\ \n/g'
+		@find $(SRC_DIR) -type f -name "*.c" | tr "\n" "|" | sed -r 's/["|"]+/\\ \n/g'
 
 run: all
 	./$(NAME) $(PARAM)
@@ -66,10 +66,10 @@ leaks: all
 	 valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=high --show-reachable=yes --trace-children=yes --verbose --log-file=valgrind.log ./push_swap 10 9 8 7 6 5
 
 get_dir:
-		@find src -type d | tr "\n" "|" | sed -r 's/["|"]+/\\ \n/g' | sed -e 's/src\///g'
+		@find $(SRC_DIR) -type d | tr "\n" "|" | sed -r 's/["|"]+/\\ \n/g' | sed -e 's/$(SRC_DIR)\///g'
 
 header :
-	@Headermaker src inc/prototypes.h -inc structs define
+	@Headermaker $(SRC_DIR) $(INC_DIR)/prototypes.h -inc structs define
 
 
 .PHONY: all clean fclean re
