@@ -1,4 +1,4 @@
-NAME		=	push_swap
+NAME		=	ExecutableName
 
 # --   Directory   -- #
 OBJ_DIR     =	objs
